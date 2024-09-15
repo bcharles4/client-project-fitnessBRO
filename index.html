@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FitnessBRO</title>
+	<link rel="stylesheet" href="./css/index.css">
+
+    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Oswald&family=Poppins:wght@300&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+
+<body>
+
+		<div class ="navBar">
+			<!-- <img src= "./img/ftlogo.png" alt="" /> -->
+			<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Profile</a></li>
+			<li><a href="#">Contact</a></li>
+			<li><a href="#">About Us</a></li>
+			</ul>
+			<button class="button-3d" id="login-button">
+				<span class="button-text">LOGIN</span>
+			</button>
+		</div>
+
+		<div class="containerBody">
+
+			<div class="con">
+				<button id="btn"> Get Started</button>
+			</div>
+
+		</div>
+
+
+
+
+	<!-- Popup Form -->
+
+    <div class="blur-bg-overlay"></div>
+    <div class="form-popup">
+        <span class="close-btn material-symbols-outlined">close</span>
+        <div class="form-box login">
+            <div class="form-details">
+                <h2 style="margin-bottom: 20px;">Welcome Back</h2>
+                <p>Please log in using your personal information to stay with us.</p>
+            </div>
+            <div class="form-content">
+                <form action="login.php" method="POST">
+                    <div class="input-field">
+                        <input type="text" id="username" name="username" required/>
+                        <label>Username</label>
+                        <p class="errorMessage" id="username-error-message"></p>
+                    </div>
+        
+                    <div class="input-field">
+                        <input type="password" id="password" name="password" required />
+                        <label>Password</label>
+                        <p class="errorMessage" id="password-error-message"></p>
+                    </div>
+        
+                    <a href="#" class="forgot-pass">Forgot password?</a>
+        
+                    <button class="btn" type="submit">Log In</button>
+                </form>
+
+                <script>
+
+                    function validateForm() {
+                        var username = document.getElementById('username').value;
+                        var password = document.getElementById('pass').value;
+                        var userErrorMessage = "";
+                        var passErrorMessage = "";
+
+                        if (username === "") {
+                            userErrorMessage += "* Username field is empty\n";
+                            document.getElementById("username-error-message").innerHTML = userErrorMessage;
+                        }
+
+                        if (password === ""){
+                            passErrorMessage += "* Password field is empty\n";
+                            document.getElementById("password-error-message").innerHTML = passErrorMessage;
+                        }
+
+                        if (userErrorMessage !== "" && passErrorMessage !== "") {
+                            return false;
+                        } else {
+                            // Add AJAX request for additional validation
+                            var xhr = new XMLHttpRequest();
+                            xhr.onreadystatechange = function () {
+                                if (xhr.readyState === 4) {
+                                    if (xhr.status === 200) {
+                                        var response = JSON.parse(xhr.responseText);
+                                        if (response.success) {
+                                            if (response.redirect) {
+                                                window.location.href = response.redirect; // Redirect to the specified URL
+                                            } else {
+                                                // Handle other success scenarios
+                                            }
+                                        } else {
+                                            alert(response.message);
+                                        }
+                                    } else {
+                                        alert("Error: " + xhr.statusText);
+                                    }
+                                }
+                            };
+                        }
+                    }
+                </script>
+
+                <div class="bottom-link">
+                    Don't have an account?
+                    <a href="#" id="signup-link">Signup</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-box signup">
+            <div class="form-details">
+                <h2>Create an account</h2>
+                <p>To become a part of our community, please sign up using your personal information.</p>
+            </div>
+            <div class="form-content">
+                <h2>SIGN UP</h2>
+
+                <form id="registrationForm" action="reg.php" method="post">
+                    <div class="input-field">
+                        <input type="text" id="name" name="fullname" />
+                        <label>Name</label>
+                        <p class="errorMessage" id="nameErrorMessage"></p>
+
+                        
+                    </div>
+
+                    <div class="input-field">
+                        <input type="text" id="username_su" name="username" />
+                        <label>Username</label>
+                        <p class="errorMessage" id="userErrorMessage"></p>
+                        
+                    </div>
+
+                    <div class="input-field">
+                        <input type="email" id="email" name="email" />
+                        <label>Email</label>
+                        <p class="errorMessage" id="emailErrorMessage"></p>                        
+                    </div>
+
+                    <div class="input-field">
+                        <input type="password" id="pass_su" name="password" />
+                        <label>Create password</label>
+                        <p class="errorMessage" id="createPassErrorMessage"></p>
+                        
+                    </div>
+
+                    <div class="input-field">
+                        <input type="password" id="pass2" name="cpw" />
+                        <label>Confirm password</label>
+                        <p class="errorMessage" id="confirmPassErrorMessage"></p>
+                        
+                    </div>
+
+                    <div class="policy-text">
+                        <input type="checkbox" id="policy" />
+                        <label for="policy">
+                            I agree to the
+                            <a href="#">Terms and Conditions</a>
+                        </label>
+                    </div>
+
+                    <a href="#" class="forgot-pass">Forgot password?</a>
+
+                    <button type="submit" class="btn" name="btn" onclick="checkEmptyTextboxes()">Submit</button>
+
+                       <!-- class="btn" onclick="openPopup()" -->
+                  
+                </form>
+
+                <script>
+                    function checkEmptyTextboxes() {
+                        var name = document.getElementById("name").value;
+                        var username = document.getElementById("username_su").value;
+                        var email = document.getElementById("email").value;
+                        var password = document.getElementById("pass_su").value;
+                        var confirmPassword = document.getElementById("pass2").value;
+                        var policyCheckbox = document.getElementById("policy");
+
+                        var nameErrorMessage = "";
+                        var userErrorMessage = "";
+                        var emailErrorMessage = "";
+                        var createPassErrorMessage = "";
+                        var confirmPassErrorMessage = "";
+                        var lengthPassErrorMessage = "";
+                        var errorMessage = "";
+                        
+
+                        if (name === "") {
+                            nameErrorMessage += "  * Name field is empty.\n";
+                            document.getElementById("nameErrorMessage").innerHTML = nameErrorMessage;
+                        }
+
+                        if (username === "") {
+                            userErrorMessage += "  * Username field is empty.\n";
+                            document.getElementById("userErrorMessage").innerHTML = userErrorMessage;
+                        }
+
+                        // Email validation
+                        if (email === "") {
+                            emailErrorMessage += "  * Email field is empty.\n";
+                            document.getElementById("emailErrorMessage").innerHTML = emailErrorMessage;
+                        } else {
+                            // Regular expression for email validation
+                            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                            if (!email.match(emailRegex)) {
+                                emailErrorMessage += "  * Invalid email format, use @ and domain to make it valid.\n";
+                                document.getElementById("emailErrorMessage").innerHTML = emailErrorMessage;
+                            }
+                        }
+
+                        if (password === "" && confirmPassword === "") {
+                            createPassErrorMessage += "  * \nPassword field is empty.\n";
+                            document.getElementById("createPassErrorMessage").innerHTML = createPassErrorMessage;
+
+                            confirmPassErrorMessage += "  \n";
+                            document.getElementById("confirmPassErrorMessage").innerHTML = confirmPassErrorMessage;
+                        }
+                        else if (password.length < 8 && confirmPassword.length < 8){
+                            lengthPassErrorMessage += "  * Password must be 8 characters.\n";
+                            document.getElementById("createPassErrorMessage").innerHTML = lengthPassErrorMessage;
+
+                            confirmPassErrorMessage += "  * Password must be 8 characters.\n";
+                            document.getElementById("confirmPassErrorMessage").innerHTML = confirmPassErrorMessage;
+                        }
+
+                        else if (password !== confirmPassword || confirmPassword !== password) {
+                            lengthPassErrorMessage += "  * Password and Confirm Password do not match.\n";
+                            document.getElementById("createPassErrorMessage").innerHTML = lengthPassErrorMessage;
+
+                            confirmPassErrorMessage += "  * Password and Confirm Password do not match.\n";
+                            document.getElementById("confirmPassErrorMessage").innerHTML = confirmPassErrorMessage;
+
+
+                        }
+
+                        // if (password.length < 8 && confirmPassword.length < 8 ) {
+                        //     lengthPassErrorMessage += "  * Password must be 8 characters.\n";
+                        //     document.getElementById("createPassErrorMessage").innerHTML = lengthPassErrorMessage;
+                        // }
+
+                        if (confirmPassword === "") {
+                            confirmPassErrorMessage += "  * Password field is empty.\n";
+                            document.getElementById("confirmPassErrorMessage").innerHTML = confirmPassErrorMessage;
+                        }
+
+                        if (!policyCheckbox.checked) {
+                            errorMessage += alert("You must agree to the Terms and Conditions.\n");
+                            
+                            
+                        }
+
+
+                        if (errorMessage !== "" || nameErrorMessage !== "" || userErrorMessage !== "" || emailErrorMessage !=="" ||
+                            createPassErrorMessage !== "" || confirmPassErrorMessage !== "" || lengthPassErrorMessage !== "") {
+                            return false;// Prevent the form from submitting
+                        } else {
+                            // Validation passed, open the popup
+                            openPopup();
+                           
+                            
+                        }
+                    }
+
+
+                    function openPopup() {
+                       
+                        popup.classList.add("open-popup");
+                    }
+
+                    function closePopup() {
+                       
+                        popup.classList.remove("open-popup");
+                    }
+
+                   
+                </script>
+                
+
+                <div class="bottom-link">
+                    Already have an account?
+                    <a href="" id="login-link">Login</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+	<script src="script.js" defer></script>
+
+	
+</body>
+</html>

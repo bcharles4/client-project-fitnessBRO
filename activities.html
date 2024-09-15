@@ -1,0 +1,683 @@
+<?php
+session_start();  // Start the session
+
+// Check if the user is logged in
+if (!isset($_SESSION['fName'])) {
+    // Redirect to login page if not logged in
+    header("Location: login.php");
+    exit();
+}
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities</title>
+
+    <link rel="stylesheet" href="./css/profile.css">
+    <link rel="stylesheet" href="./css/activities.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+
+    <style>
+
+@keyframes appear {
+            from {
+                opacity: 0;
+                scale: 0.5;
+                /* clip-path: inset(100% 100% 0 0); */
+            }
+
+            to {
+                opacity: 1;
+                scale: 1;
+                /* clip-path: inset(0 0 0 0); */
+            }
+        }
+        .contents, .description, video {
+            animation: appear 2s linear;
+            animation-timeline: view();
+             animation-range: entry 0;
+             animation-range: entry 0 cover 40%;
+        }
+    </style>
+
+
+</head>
+
+
+
+<body>
+    <div class ="navBar">
+        <ul>
+            <li><a href="dashboard.php">Home</a></li>
+            <li><a href="profile.php">Profile</a></li>
+            <li><a href="#">Activities</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="about.html">About Us</a></li>
+        </ul>
+        
+        <div class="icons-con">
+            <a href="logout.php">  
+                <ion-icon name="log-out-sharp" id="icons" alt="Logout"></ion-icon>
+            </a>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const start = document.getElementById("start-exe");
+    const startCon = document.querySelector('.start_con'); 
+
+    console.log(startCon); // Ensure start_con element exists
+
+    // Ensure the script runs after the DOM is fully loaded
+    start.addEventListener('click', function() {
+        // Retrieve the selected exercise from local storage
+        const selectedExercise = localStorage.getItem('selectedExercise');
+        alert("Selected Exercise: " + selectedExercise);  // Debugging
+
+        // Show the selected exercise section based on the value from localStorage
+        if (selectedExercise === "Cardio") {
+            document.querySelector('.act_head-cardio').style.display = 'block';
+            console.log('Cardio selected');
+            startCon.style.display = 'none';
+        } else if (selectedExercise === "Balance") {
+            document.querySelector('.act_head-balance').style.display = 'block';
+            console.log('Balance selected');
+            startCon.style.display = 'none';
+        } else if (selectedExercise === "Strength") {
+            document.querySelector('.act_head-muscle').style.display = 'block';
+            console.log('Strength selected');
+            startCon.style.display = 'none';
+        } else {
+            console.log("No matching exercise section found.");
+        }
+
+        // Confirm that .start_con is hidden
+        console.log('start_con should now be hidden');
+    });
+});
+
+    </script>
+    
+  
+        <br><br><br>
+
+        <div class="start_con">
+            <div class="start">
+                <p> <b>Congratulations!</b> </p>
+                <p>Your data was successfuly submitted! </p>
+                <p>Let's start your <b>WORKOUT's</b>  with us!</p>
+               <center><button id="start-exe">START YOUR EXERCISE</button></center> 
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+       <div class="exercise-section act_head-cardio">
+        <h1 style="background-color: #111;">CARDIO</h1>
+       <div class="activity_con">
+      
+        <div class="contents">
+            <h1>Day1</h1>
+            <video width="400" controls>
+                <source src="./vid/Treadmill.mp4" type="video/mp4">
+                Your browser does not support HTML video.
+              </video>
+              <h2>Treadmill Intervals</h2>
+            <div class="description">
+            <ul>
+                <li>4-6 MPH = moderate jog</li>
+                <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+                <li>8-10 MPH = HIIT target speed </li>
+                <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+                <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+                <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+            </ul>
+            </div>
+        </div>
+
+        <div class="contents">
+            <h1>Day2</h1>
+            <video width="400" controls>
+                <source src="./vid/Treadmill.mp4" type="video/mp4">
+                Your browser does not support HTML video.
+              </video>
+              <h2>Treadmill Intervals</h2>
+            <div class="description">
+            <ul>
+                <li>4-6 MPH = moderate jog</li>
+                <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+                <li>8-10 MPH = HIIT target speed </li>
+                <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+                <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+                <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+            </ul>
+            </div>
+        </div>
+    
+        <div class="contents">
+            <h1>Day3</h1>
+            <video width="400" controls>
+                <source src="./vid/Treadmill.mp4" type="video/mp4">
+                Your browser does not support HTML video.
+              </video>
+              <h2>Treadmill Intervals</h2>
+            <div class="description">
+            <ul>
+                <li>4-6 MPH = moderate jog</li>
+                <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+                <li>8-10 MPH = HIIT target speed </li>
+                <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+                <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+                <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+            </ul>
+            </div>
+        </div>
+        
+        <div class="contents">
+            <h1>Day4</h1>
+            <video width="400" controls>
+                <source src="./vid/Treadmill.mp4" type="video/mp4">
+                Your browser does not support HTML video.
+              </video>
+              <h2>Treadmill Intervals</h2>
+            <div class="description">
+            <ul>
+                <li>4-6 MPH = moderate jog</li>
+                <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+                <li>8-10 MPH = HIIT target speed </li>
+                <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+                <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+                <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+            </ul>
+            </div>
+        </div>
+
+        <div class="contents">
+            <h1>Day5</h1>
+            <video width="400" controls>
+                <source src="./vid/Treadmill.mp4" type="video/mp4">
+                Your browser does not support HTML video.
+              </video>
+              <h2>Treadmill Intervals</h2>
+            <div class="description">
+            <ul>
+                <li>4-6 MPH = moderate jog</li>
+                <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+                <li>8-10 MPH = HIIT target speed </li>
+                <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+                <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+                <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+            </ul>
+            </div>
+        </div>
+
+
+
+        <div class="contents">
+            <h1>Day6</h1>
+            <video width="400" controls>
+                <source src="./vid/Treadmill.mp4" type="video/mp4">
+                Your browser does not support HTML video.
+              </video>
+              <h2>Treadmill Intervals</h2>
+            <div class="description">
+            <ul>
+                <li>4-6 MPH = moderate jog</li>
+                <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+                <li>8-10 MPH = HIIT target speed </li>
+                <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+                <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+                <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+            </ul>
+            </div>
+        </div>
+
+
+        <div class="contents">
+            <h1>Day7</h1>
+            <video width="400" controls>
+                <source src="./vid/Treadmill.mp4" type="video/mp4">
+                Your browser does not support HTML video.
+              </video>
+              <h2>Treadmill Intervals</h2>
+            <div class="description">
+            <ul>
+                <li>4-6 MPH = moderate jog</li>
+                <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+                <li>8-10 MPH = HIIT target speed </li>
+                <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+                <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+                <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+            </ul>
+            </div>
+        </div>
+
+        <div class="contents">
+            <div class="btn_con">
+            <button id="output">FINISHED</button>
+            </div>
+            <div id="results1" class="results" style="display: none;">
+                <form action="results.php" method="POST">
+                    <p style="padding: 5px;">Fill up the form to know your progress of your Body:</p>
+                    <div class="form-group">
+                        <label for="height">Height (in cm):</label>
+                        <input type="number" id="height" name="height" required>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="weight">Weight (in kg):</label>
+                        <input type="number" id="weight" name="weight" required>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="body">Body Goal:</label>
+                        <input list="body-goals" name="goal" id="goal" placeholder="Select or type your goal" required>
+                        <datalist id="body-goals">
+                            <option value="Weight Loss">
+                            <option value="Muscle Gain">
+                            <option value="Cardiovascular Health">
+                        </datalist>
+                    </div>
+                
+                    <center><input type="submit" value="SUBMIT"></center>
+                </form>
+            </div>
+    
+        </div>
+
+        </div>
+      </div>
+</div>  
+
+<br><br><br>
+
+<div class="exercise-section act_head-balance">
+    <h1 style="background-color: #111;">BALANCE</h1>
+   <div class="activity_con">
+  
+    <div class="contents">
+        <h1>Day1</h1>
+        <video width="400" controls>
+            <source src="./vid/Treadmill.mp4" type="video/mp4">
+            Your browser does not support HTML video.
+          </video>
+          <h2>Treadmill Intervals</h2>
+        <div class="description">
+        <ul>
+            <li>4-6 MPH = moderate jog</li>
+            <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+            <li>8-10 MPH = HIIT target speed </li>
+            <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+            <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+            <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+        </ul>
+        </div>
+    </div>
+
+    <div class="contents">
+        <h1>Day2</h1>
+        <video width="400" controls>
+            <source src="./vid/Treadmill.mp4" type="video/mp4">
+            Your browser does not support HTML video.
+          </video>
+          <h2>Treadmill Intervals</h2>
+        <div class="description">
+        <ul>
+            <li>4-6 MPH = moderate jog</li>
+            <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+            <li>8-10 MPH = HIIT target speed </li>
+            <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+            <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+            <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+        </ul>
+        </div>
+    </div>
+
+    <div class="contents">
+        <h1>Day3</h1>
+        <video width="400" controls>
+            <source src="./vid/Treadmill.mp4" type="video/mp4">
+            Your browser does not support HTML video.
+          </video>
+          <h2>Treadmill Intervals</h2>
+        <div class="description">
+        <ul>
+            <li>4-6 MPH = moderate jog</li>
+            <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+            <li>8-10 MPH = HIIT target speed </li>
+            <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+            <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+            <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+        </ul>
+        </div>
+    </div>
+    
+    <div class="contents">
+        <h1>Day4</h1>
+        <video width="400" controls>
+            <source src="./vid/Treadmill.mp4" type="video/mp4">
+            Your browser does not support HTML video.
+          </video>
+          <h2>Treadmill Intervals</h2>
+        <div class="description">
+        <ul>
+            <li>4-6 MPH = moderate jog</li>
+            <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+            <li>8-10 MPH = HIIT target speed </li>
+            <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+            <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+            <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+        </ul>
+        </div>
+    </div>
+
+    <div class="contents">
+        <h1>Day5</h1>
+        <video width="400" controls>
+            <source src="./vid/Treadmill.mp4" type="video/mp4">
+            Your browser does not support HTML video.
+          </video>
+          <h2>Treadmill Intervals</h2>
+        <div class="description">
+        <ul>
+            <li>4-6 MPH = moderate jog</li>
+            <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+            <li>8-10 MPH = HIIT target speed </li>
+            <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+            <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+            <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+        </ul>
+        </div>
+    </div>
+
+
+
+    <div class="contents">
+        <h1>Day6</h1>
+        <video width="400" controls>
+            <source src="./vid/Treadmill.mp4" type="video/mp4">
+            Your browser does not support HTML video.
+          </video>
+          <h2>Treadmill Intervals</h2>
+        <div class="description">
+        <ul>
+            <li>4-6 MPH = moderate jog</li>
+            <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+            <li>8-10 MPH = HIIT target speed </li>
+            <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+            <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+            <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+        </ul>
+        </div>
+    </div>
+
+
+    <div class="contents">
+        <h1>Day7</h1>
+        <video width="400" controls>
+            <source src="./vid/Treadmill.mp4" type="video/mp4">
+            Your browser does not support HTML video.
+          </video>
+          <h2>Treadmill Intervals</h2>
+        <div class="description">
+        <ul>
+            <li>4-6 MPH = moderate jog</li>
+            <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+            <li>8-10 MPH = HIIT target speed </li>
+            <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+            <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+            <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+        </ul>
+        </div>
+    </div>
+
+    <div class="contents">
+        <div class="btn_con">
+        <button id="output2">FINISHED</button>
+        </div>
+        <div  id="results2" class="results" style="display: none;">
+            <form action="results.php" method="POST">
+                <p style="padding: 5px;">Fill up the form to know your progress of your Body:</p>
+                <div class="form-group">
+                    <label for="height">Height (in cm):</label>
+                    <input type="number" id="height" name="height" required>
+                </div>
+            
+                <div class="form-group">
+                    <label for="weight">Weight (in kg):</label>
+                    <input type="number" id="weight" name="weight" required>
+                </div>
+            
+                <div class="form-group">
+                    <label for="body">Body Goal:</label>
+                    <input list="body-goals" name="goal" id="goal" placeholder="Select or type your goal" required>
+                    <datalist id="body-goals">
+                        <option value="Weight Loss">
+                        <option value="Muscle Gain">
+                        <option value="Cardiovascular Health">
+                    </datalist>
+                </div>
+            
+                <center><input type="submit" value="SUBMIT"></center>
+            </form>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+  </div>
+</div>  
+
+
+<br><br><br>
+
+<div class="exercise-section  act_head-muscle">
+    <h1 style="background-color: #111;">STRENGTH TRAINING</h1>
+   <div class="activity_con">
+  
+    <div class="contents">
+        <h1>Day1</h1>
+        <video width="400" controls>
+            <source src="./vid/Treadmill.mp4" type="video/mp4">
+            Your browser does not support HTML video.
+          </video>
+          <h2>Treadmill Intervals</h2>
+        <div class="description">
+        <ul>
+            <li>4-6 MPH = moderate jog</li>
+            <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+            <li>8-10 MPH = HIIT target speed </li>
+            <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+            <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+            <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+        </ul>
+        </div>
+    </div>
+
+    <div class="contents">
+        <h1>Day2</h1>
+        <video width="400" controls>
+            <source src="./vid/Treadmill.mp4" type="video/mp4">
+            Your browser does not support HTML video.
+          </video>
+          <h2>Treadmill Intervals</h2>
+        <div class="description">
+        <ul>
+            <li>4-6 MPH = moderate jog</li>
+            <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+            <li>8-10 MPH = HIIT target speed </li>
+            <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+            <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+            <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+        </ul>
+        </div>
+    </div>
+
+    <div class="contents">
+        <h1>Day3</h1>
+        <video width="400" controls>
+            <source src="./vid/Treadmill.mp4" type="video/mp4">
+            Your browser does not support HTML video.
+          </video>
+          <h2>Treadmill Intervals</h2>
+        <div class="description">
+        <ul>
+            <li>4-6 MPH = moderate jog</li>
+            <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+            <li>8-10 MPH = HIIT target speed </li>
+            <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+            <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+            <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+        </ul>
+        </div>
+    </div>
+    
+    <div class="contents">
+        <h1>Day4</h1>
+        <video width="400" controls>
+            <source src="./vid/Treadmill.mp4" type="video/mp4">
+            Your browser does not support HTML video.
+          </video>
+          <h2>Treadmill Intervals</h2>
+        <div class="description">
+        <ul>
+            <li>4-6 MPH = moderate jog</li>
+            <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+            <li>8-10 MPH = HIIT target speed </li>
+            <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+            <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+            <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+        </ul>
+        </div>
+    </div>
+
+    <div class="contents">
+        <h1>Day5</h1>
+        <video width="400" controls>
+            <source src="./vid/Treadmill.mp4" type="video/mp4">
+            Your browser does not support HTML video.
+          </video>
+          <h2>Treadmill Intervals</h2>
+        <div class="description">
+        <ul>
+            <li>4-6 MPH = moderate jog</li>
+            <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+            <li>8-10 MPH = HIIT target speed </li>
+            <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+            <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+            <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+        </ul>
+        </div>
+    </div>
+
+
+
+    <div class="contents ">
+        <h1>Day6</h1>
+        <video width="400" controls>
+            <source src="./vid/Treadmill.mp4" type="video/mp4">
+            Your browser does not support HTML video.
+          </video>
+          <h2>Treadmill Intervals</h2>
+        <div class="description">
+        <ul>
+            <li>4-6 MPH = moderate jog</li>
+            <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+            <li>8-10 MPH = HIIT target speed </li>
+            <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+            <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+            <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+        </ul>
+        </div>
+    </div>
+
+
+    <div class="contents">
+        <h1>Day7</h1>
+        <video width="400" controls>
+            <source src="./vid/Treadmill.mp4" type="video/mp4">
+            Your browser does not support HTML video.
+          </video>
+          <h2>Treadmill Intervals</h2>
+        <div class="description">
+        <ul>
+            <li>4-6 MPH = moderate jog</li>
+            <li>6-8 MPH = moderate/fast jog at roughly 8-10 minute mile</li>
+            <li>8-10 MPH = HIIT target speed </li>
+            <li>Run for 2 minutes at a pace you can comfortably run for 5 minutes. </li>
+            <li>1 minute of light walking. Keep your abs engaged, and take deep breaths to get your heart rate down.</li>
+            <li>Repeat for five rounds and increase speed each round by 2-3 levels (2-3 MPH)</li>
+        </ul>
+        </div>
+    </div>
+
+    <div class="contents">
+        <div class="btn_con">
+        <button id="output3">FINISHED</button>
+        </div>
+        <div id="results3" class="results" style="display: none;">
+            <form action="results.php" method="POST">
+                <p style="padding: 5px;">Fill up the form to know your progress of your Body:</p>
+                <div class="form-group">
+                    <label for="height">Height (in cm):</label>
+                    <input type="number" id="height" name="height" required>
+                </div>
+            
+                <div class="form-group">
+                    <label for="weight">Weight (in kg):</label>
+                    <input type="number" id="weight" name="weight" required>
+                </div>
+            
+                <div class="form-group">
+                    <label for="body">Body Goal:</label>
+                    <input list="body-goals" name="goal" id="goal" placeholder="Select or type your goal" required>
+                    <datalist id="body-goals">
+                        <option value="Weight Loss">
+                        <option value="Muscle Gain">
+                        <option value="Cardiovascular Health">
+                    </datalist>
+                </div>
+            
+                <center><input type="submit" value="SUBMIT"></center>
+            </form>
+        </div>
+
+    </div>
+
+    
+
+
+
+
+
+
+  </div>
+
+</div>  
+
+
+
+
+
+<div style="height: 10pc;"></div>
+
+
+
+    <script src="./js/functionality.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

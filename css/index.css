@@ -1,0 +1,410 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.navBar {
+    width: 100%;
+    height: 90px;
+    background-color: white; 
+    display: flex;
+    justify-content: left; /* Distribute space evenly between h1 and ul */
+    align-items: center; /* Align items vertically in the center */
+    padding: 0px; /* Add some padding to the left and right */
+    
+ 
+ 
+ 
+ }
+ 
+ 
+ .navBar img {
+     height: 100px;
+     width: 100px;
+     margin: -5px;
+     margin-left: 20px;
+     margin-right: 40px;
+ }
+ 
+ .navBar ul {
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+     display: flex;
+     justify-content: right;
+     padding: 20px;
+ 
+     
+ }
+ 
+ .navBar li a {
+     text-decoration: none;
+     list-style: none;
+     
+     padding: 10px;
+     color: white;
+     font-weight: bold;
+ 
+ }
+ 
+ h1 {
+ 
+     color: white;
+ }
+ 
+ .navBar ul li a {
+     color: black;
+     text-align: center;
+     text-decoration: none;
+     display: block;
+     font-size: 1.7em;
+     transition: background-color 0.3s ease;
+     margin-right: 20px;
+     font-family: 'Founder';
+ }
+ 
+ .navBar ul li a:hover {
+     background-color: white;
+     color: black;
+    
+     border-radius: 4px;
+ }
+ 
+ .navBar ul li a:active {
+     background-color: orangered;
+     color: white;
+ }
+ 
+ .navBar .btn {
+     margin: 20px;
+     margin-left: auto; /* Pushes the button to the right */
+ }
+ 
+ .navBar button {
+     margin-left: auto;
+     height: 40px;
+     width: 100px;
+     background-color: black;
+     color: white;
+     font-weight: bold;
+     border: none;
+     cursor: pointer;
+ }
+ 
+ .navBar button:hover {
+     background-color: orangered;
+     color: white;
+ }
+
+
+ .containerBody {
+    width: 100%;
+    height: 90vh;
+    background: black;
+    background-image: url("../img/bg.jpg");
+    background-size: 100% 100%;
+    background-attachment:fixed;
+ }
+
+ .con {
+    background-color: transparent;
+    width: 70%;
+    height: 65vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    position: relative; /* Added this */
+}
+
+.con button {
+    width: 8pc;
+    height: 3pc;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: white;
+    border-radius: 20px;
+    position: absolute;  /* Added this */
+    bottom: 0px; /* Distance from the bottom */
+    cursor: pointer;
+}
+
+.con button:hover {
+    background-color: orangered;
+    color: white;
+   
+}
+
+
+
+
+
+
+
+
+.blur-bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+  }
+  
+  .show-popup .blur-bg-overlay {
+    opacity: 1;
+    pointer-events: auto ;
+  }
+  
+  .form-popup {
+    position: fixed;
+    top: 53%;
+    left: 50%;
+    max-width: 720px;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 2px solid white;
+    z-index: 2;
+    transition: transform 0.5s, opacity 0.3s;
+    border-radius: 30px;
+  }
+  
+  
+  .show-popup .form-popup {
+    opacity: 1;
+    pointer-events: auto ;
+    transform: translate(-50%, -60%);
+    transition: transform 0.5s, opacity 0.1s;
+  }
+  
+  
+  
+  .form-popup .close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: gray;
+    cursor: pointer;
+  }
+  
+  
+  .navbar .menu-btn {
+    display: none;
+    color: orange;
+    cursor: pointer;
+    font-size: 1.5rem;
+    top: 0;
+    position: absolute;
+    
+  }
+  
+  .navbar .links .close-btn {
+    display: none;
+    color: black;
+    cursor: pointer;
+    font-size: 1.5rem;
+    top: 0;
+    right: 0;
+    position: absolute;
+    /* top: 20px; */
+  }
+  
+  
+  .form-popup .form-box {
+    display: flex;
+  }
+  
+  .form-box .form-details {
+    max-width: 330px;
+    width: 100%;
+    display: flex;
+    padding:  0 20px;
+    text-align: center;
+    flex-direction: column;
+    align-tracks: center;
+    justify-content: center;
+    
+  
+    
+  } 
+  
+  .login .form-details {
+    background: url(../img/bgLog.jpg);
+    background-size: cover;
+    border-radius: 30px;
+    background-position: center;
+    padding-top: 12pc;
+  }
+  
+  .signup .form-details {
+    background: url(../img/bgLog.jpg);
+    background-size: cover;
+    border-radius: 30px;
+    background-position: center;
+    padding-top: 12pc;
+  }
+  
+  .form-box h2 {
+    text-align: center;
+  
+  
+  }
+  
+  .form-details  h2 {
+    color: white;
+    margin-top: -14pc;
+  }
+  
+  .form-details  p{
+    color: white;
+    font-weight: 600;
+  }
+  
+  
+  
+  .form-box .form-content {
+    width: 100%;
+    padding: 35px;
+  }
+  
+  .input-fieldpop{
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+  }
+  form .input-field {
+    height: 40px;
+    width: 90%;
+    margin-top: 20px;
+    position: relative;
+    padding: 6.9px;
+    
+  }
+  
+  form .input-field p {
+    font-size: 10px;
+    color: red;
+    
+    margin-top: 5px;
+  }
+  
+  /* form .input-field p:hover{
+    font-size: 12.5px;
+    cursor: pointer;
+    color: black;
+    text-decoration: underline;
+  } */
+  form .input-field input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    padding: 0 15px;
+    font-size: 0.95rem;
+    border-radius: 15px;
+    border: 1px solid gray;
+  
+  }
+  .input-field.error input{
+    border-color: yellow;
+  }
+  .input-field .error{
+    color: red;
+    font-size: 12px;
+  }
+  
+  .input-field input:focus {
+    border-color: orangered;
+  }
+  
+  .input-field input:is(:focus, :valid) {
+    padding: 16px 15px 0;
+  }
+  
+  form .input-field label {
+    position:absolute;
+    top: 50%;
+    left: 15px;
+    color: #717171;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: 0.2s ease;
+  }
+  
+  
+  .input-field input:is(:focus, :valid) ~ label{
+    color: gray;
+    font-size: 0.75rem;
+    transform:translateY(-120%);
+  }
+  
+  .form-box a {
+    text-decoration: none;
+    color: red;
+  }
+  
+  .form-box a:hover {
+    text-decoration: underline;
+  }
+  
+  .form-box :where(.forgot-pass, .policy-text) {
+    display: inline-flex;
+    margin-top: 2pc;
+    font-size: 0.95rem;
+  }
+  
+  form button {
+    width: 100%;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 14px 0;
+    border-radius: 3px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    color: white;
+    cursor: pointer;
+    background-color: orangered;
+    /* transition: 0.2 ease; */
+  }
+  
+  form button:hover {
+    background-color: #111;
+    color: white;
+  }
+  
+  .form-box .bottom-link {
+    text-align: center;
+  }
+  
+  .form-popup .signup,
+  .form-popup.show-signup .login {
+    display: none;
+  }
+  
+  
+  .form-popup.show-signup .signup {
+    display: flex;
+
+  }
+  .signup .policy-text {
+    display: flex;
+    align-items: center;
+  }
+  
+  .signup .policy-text input {
+    width: 14px;
+    height: 14px;
+    margin-right: 7px;
+  }
+
+

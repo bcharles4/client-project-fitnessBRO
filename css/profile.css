@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+
+.navBar {
+    width: 100%;
+    height: 90px;
+    background-color: white; 
+    display: flex;
+    justify-content: left; /* Distribute space evenly between h1 and ul */
+    align-items: center; /* Align items vertically in the center */
+    padding: 0px; /* Add some padding to the left and right */
+    
+ 
+ 
+ 
+ }
+ 
+ 
+ .navBar img {
+     height: 100px;
+     width: 100px;
+     margin: -5px;
+     margin-left: 20px;
+     margin-right: 40px;
+ }
+ 
+ .navBar ul {
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+     display: flex;
+     justify-content: right;
+     padding: 20px;
+ 
+     
+ }
+ 
+ .navBar li a {
+     text-decoration: none;
+     list-style: none;
+     
+     padding: 10px;
+     color: white;
+     font-weight: bold;
+ 
+ }
+ 
+ h1 {
+ 
+     color: white;
+ }
+ 
+ .navBar ul li a {
+     color: black;
+     text-align: center;
+     text-decoration: none;
+     display: block;
+     font-size: 1.7em;
+     transition: background-color 0.3s ease;
+     margin-right: 20px;
+     font-family: 'Founder';
+ }
+ 
+ .navBar ul li a:hover {
+     background-color: white;
+     color: black;
+    
+     border-radius: 4px;
+ }
+ 
+ .navBar ul li a:active {
+     background-color: orangered;
+     color: white;
+ }
+ 
+ .navBar .btn {
+     margin: 20px;
+     margin-left: auto; /* Pushes the button to the right */
+ }
+ 
+
+ .icons-con {
+    margin-left: auto; /* Pushes the button to the right */
+}
+
+ #icons {
+    font-size: 30px;
+    cursor: pointer;
+    padding-right: 30px;
+    color: black;
+
+}
+
+#icons:hover {
+    font-size: 32px;
+}
+
+
+
+.containerBody {
+    width: 100%;
+    height: 90vh;
+    background: black;
+    background-image: url("../img/dashboardBG.jpg");
+    background-size: 100% 100%;
+    background-attachment:fixed;
+    
+ }
+
+
+
+ 
+.fitness-profile {
+    width: 50%;
+    height: 54vh;
+    background-color: white;
+    padding: 20px 20px;
+    margin: 0 auto;
+    border-radius: 40px; 
+    border: 10px solid white;
+    box-shadow: 20px 20px 5px whitesmoke;
+ 
+}
+
+
+.fitness-profile h1{
+    color: black;
+    border-bottom: 1px dotted black;
+}
+
+.userData {
+    padding: 20px;
+    width: 80%;
+    border-radius: 20px;
+    margin-top: 2pc ;
+    margin-left: 5pc;
+    font-size: 25px;
+
+}
+.userData h3 {
+    margin: 10px;
+    font-size: 22px;
+}
+
+.userData p {
+    padding: 7px;
+    font-size: 20px;    
+}
+
+.data {
+    display: inline;
+    font-size: 24px;
+    font-weight: bold;
+}
